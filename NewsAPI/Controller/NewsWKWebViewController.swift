@@ -8,20 +8,25 @@
 import UIKit
 import WebKit
 
-var webView = WKWebView()
+
 
 class NewsWKWebViewController: UIViewController {
     
-    var newsVC = NewsAPIViewController()
+    var webView = WKWebView()
+    var url: String?
+
+
+    //var newsVC = NewsAPIViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        load(newsVC.webString ?? "https://www.apple.com")
-        
-        print("I could transfer url from initial VC: \(newsVC.webString ?? "or not((")")
-        
+            
         view = webView
+        guard let currentURL = url else { return }
+        load(currentURL)
+        
+        navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
 
     }
     
@@ -33,9 +38,6 @@ class NewsWKWebViewController: UIViewController {
         webView.load(URLRequest(url: url))
             }
     
-    @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
-        
-        dismiss(animated: true, completion: nil)
-    }
+
     
 }

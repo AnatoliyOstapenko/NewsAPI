@@ -49,10 +49,28 @@ class NewsAPIViewController: UIViewController {
     
     func goToWKWebVC() {
         // Use the code when you have separate storyboards!!!
-        let vc = UIStoryboard(name: "NewsWKWeb", bundle: nil).instantiateViewController(withIdentifier: "NewsWKWeb")
+//        let vc = UIStoryboard(name: "NewsWKWeb", bundle: nil).instantiateViewController(withIdentifier: "NewsWKWeb")
+//
+//        vc.modalPresentationStyle = .fullScreen // open full screen
+//        present(vc, animated: true, completion: nil)
+        
+//        let storyboard = UIStoryboard(name: "Test", bundle: nil)
+//        guard let test = storyboard.instantiateViewController(identifier: "Test") as? TestViewController else { return }
 
-        vc.modalPresentationStyle = .fullScreen // open full screen
-        present(vc, animated: true, completion: nil)
+//
+//                show(test, sender: nil)
+        // add a storyboard that should receive data from the current VC
+        let storyboard = UIStoryboard(name: "NewsWKWeb", bundle: nil)
+        // add VC that should receive data from the current VC
+        guard let newsVC = storyboard.instantiateViewController(identifier: "NewsWKWeb") as? NewsWKWebViewController else { return }
+        
+        
+        newsVC.url = webString
+        
+        show(newsVC, sender: nil) // switch to a next screen
+        
+        
+        
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -125,8 +143,8 @@ extension NewsAPIViewController: UITableViewDelegate {
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = array[indexPath.row]
-        webString = item.url
-        print("catch webString: \(webString)")
+        webString = item.url // catch url from cell
+        
         let alert = UIAlertController(title: nil, message: "Whould you like to read the article?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
             
