@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--NEWS API-->
+        <!--NewsAPI View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NewsAPIViewController" customModule="NewsAPI" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lzi-TC-van" secondAttribute="trailing" id="txB-BZ-8JP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="NEWS API" id="ydN-Ys-EC5">
+                    <navigationItem key="navigationItem" id="ydN-Ys-EC5">
                         <barButtonItem key="rightBarButtonItem" title="Saved News" id="3Nk-he-J37">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672" y="-13"/>
+            <point key="canvasLocation" x="712" y="-13"/>
         </scene>
         <!--Saved News Table View Controller-->
         <scene sceneID="tJs-VS-3l4">

@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,9 +24,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="PdX-21-fsQ">
-                        <rect key="frame" x="0.0" y="290" width="355" height="101"/>
+                        <rect key="frame" x="0.0" y="310" width="345" height="81"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="355" id="yqH-La-62J"/>
+                            <constraint firstAttribute="width" constant="345" id="yqH-La-62J"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -40,9 +41,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgW-oa-GOu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgW-oa-GOu">
                                 <rect key="frame" x="201" y="0.0" width="201" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -52,15 +53,16 @@
                         </constraints>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h3-qx-4ay">
-                        <rect key="frame" x="363" y="356" width="25" height="24"/>
+                        <rect key="frame" x="372" y="362" width="25" height="24"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                         <connections>
                             <action selector="saveNewsButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TA8-1o-jko"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-oi-DFE">
-                        <rect key="frame" x="0.0" y="270" width="402" height="20"/>
+                        <rect key="frame" x="0.0" y="270" width="402" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="AEF-WP-J3N"/>
+                            <constraint firstAttribute="height" constant="40" id="AEF-WP-J3N"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="19"/>
                         <nil key="textColor"/>
@@ -72,10 +74,10 @@
                     <constraint firstAttribute="trailing" secondItem="pcd-yT-xlD" secondAttribute="trailing" id="9YW-Lg-v5e"/>
                     <constraint firstItem="PdX-21-fsQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BFL-YR-CgV"/>
                     <constraint firstItem="mqe-Zu-wNt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Jk8-jp-IUd"/>
-                    <constraint firstAttribute="bottom" secondItem="8h3-qx-4ay" secondAttribute="bottom" constant="11" id="STM-ye-1Na"/>
+                    <constraint firstAttribute="bottom" secondItem="8h3-qx-4ay" secondAttribute="bottom" constant="5" id="STM-ye-1Na"/>
                     <constraint firstItem="B7U-oi-DFE" firstAttribute="top" secondItem="mqe-Zu-wNt" secondAttribute="bottom" id="WWg-bz-Uv8"/>
                     <constraint firstItem="pcd-yT-xlD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZCr-Ts-tGY"/>
-                    <constraint firstAttribute="trailing" secondItem="8h3-qx-4ay" secondAttribute="trailing" constant="14" id="f3s-v2-ekv"/>
+                    <constraint firstAttribute="trailing" secondItem="8h3-qx-4ay" secondAttribute="trailing" constant="5" id="f3s-v2-ekv"/>
                     <constraint firstItem="B7U-oi-DFE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gIC-Lh-pQ7"/>
                     <constraint firstAttribute="bottom" secondItem="PdX-21-fsQ" secondAttribute="bottom" id="mQ7-C9-rPv"/>
                     <constraint firstAttribute="trailing" secondItem="B7U-oi-DFE" secondAttribute="trailing" id="rW2-L7-BgI"/>
@@ -92,7 +94,12 @@
                 <outlet property="publisher" destination="YaO-2O-Xt2" id="wZw-aC-fu5"/>
                 <outlet property="title" destination="B7U-oi-DFE" id="Ytl-qz-hDV"/>
             </connections>
-            <point key="canvasLocation" x="-139" y="120"/>
+            <point key="canvasLocation" x="-693" y="143"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

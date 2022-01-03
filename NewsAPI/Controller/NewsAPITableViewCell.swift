@@ -28,10 +28,6 @@ class NewsAPITableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     
     
-
-    
-    
-    
     @IBAction func saveNewsButtonPressed(_ sender: UIButton) {
         
         
