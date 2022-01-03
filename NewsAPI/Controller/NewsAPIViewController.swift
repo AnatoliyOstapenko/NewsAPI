@@ -14,6 +14,14 @@ class NewsAPIViewController: UIViewController {
     var newsManager = NewsAPIManager.init(text: "world")
     var webString: String?
     
+    // create UIRefreshControl
+    let newsRefreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
     
     @IBOutlet weak var newsSearchBar: UISearchBar!
     @IBOutlet weak var newsTableView: UITableView!
@@ -30,7 +38,18 @@ class NewsAPIViewController: UIViewController {
         newsTableView.register(UINib(nibName: "NewsAPITableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
         updateUI()
+        
+        // add UIRefreshControl to TableView
+        newsTableView.refreshControl = newsRefreshControl
     }
+    
+    // Add update data when user pull screen
+    @objc private func refresh(sender: UIRefreshControl) {
+        
+        updateUI()
+        sender.endRefreshing()
+    }
+    
     
     func updateUI() {
         newsManager.getData { [weak self] result in
@@ -48,23 +67,12 @@ class NewsAPIViewController: UIViewController {
     }
     
     func goToWKWebVC() {
-        // Use the code when you have separate storyboards!!!
-//        let vc = UIStoryboard(name: "NewsWKWeb", bundle: nil).instantiateViewController(withIdentifier: "NewsWKWeb")
-//
-//        vc.modalPresentationStyle = .fullScreen // open full screen
-//        present(vc, animated: true, completion: nil)
-        
-//        let storyboard = UIStoryboard(name: "Test", bundle: nil)
-//        guard let test = storyboard.instantiateViewController(identifier: "Test") as? TestViewController else { return }
 
-//
-//                show(test, sender: nil)
         // add a storyboard that should receive data from the current VC
         let storyboard = UIStoryboard(name: "NewsWKWeb", bundle: nil)
         // add VC that should receive data from the current VC
         guard let newsVC = storyboard.instantiateViewController(identifier: "NewsWKWeb") as? NewsWKWebViewController else { return }
-        
-        
+         
         newsVC.url = webString
         
         show(newsVC, sender: nil) // switch to a next screen
@@ -72,22 +80,6 @@ class NewsAPIViewController: UIViewController {
         
         
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//
-//        if segue.identifier == "goToNewsWKWebView" {
-//
-//            let destination = segue.destination as! NewsWKWebViewController
-//
-//            guard let urlString = webString else { return }
-//            destination.load(urlString)
-//
-//
-//        }
-//
-//    }
-
     
 }
 
@@ -131,9 +123,7 @@ extension NewsAPIViewController: UITableViewDataSource {
         }
         
         return cell
-        
-        
-        
+  
     }
     
 }
@@ -156,17 +146,11 @@ extension NewsAPIViewController: UITableViewDelegate {
         alert.addAction(okButton)
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
-    
-        
-        
-        
-        
-//        self.performSegue(withIdentifier: "goToNewsWKWebView", sender: self)
+
     }
 }
 
 // MARK: - UISearchBarDelegate
-
 
 extension NewsAPIViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -14,20 +14,16 @@ class NewsWKWebViewController: UIViewController {
     
     var webView = WKWebView()
     var url: String?
-
-
-    //var newsVC = NewsAPIViewController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            
         view = webView
         guard let currentURL = url else { return }
         load(currentURL)
         
         navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
-
+        
     }
     
     
@@ -36,8 +32,6 @@ class NewsWKWebViewController: UIViewController {
         
         guard let url = URL(string: urlString) else { return }
         webView.load(URLRequest(url: url))
-            }
-    
-
+    }
     
 }
