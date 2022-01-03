@@ -47,6 +47,14 @@ class NewsAPIViewController: UIViewController {
         }
     }
     
+    func goToWKWebVC() {
+        // Use the code when you have separate storyboards!!!
+        let vc = UIStoryboard(name: "NewsWKWeb", bundle: nil).instantiateViewController(withIdentifier: "NewsWKWeb")
+
+        vc.modalPresentationStyle = .fullScreen // open full screen
+        present(vc, animated: true, completion: nil)
+    }
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
 //
@@ -118,7 +126,23 @@ extension NewsAPIViewController: UITableViewDelegate {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = array[indexPath.row]
         webString = item.url
-           print("something happens....")
+        print("catch webString: \(webString)")
+        let alert = UIAlertController(title: nil, message: "Whould you like to read the article?", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            self.goToWKWebVC() // Go to NewsWKWeb story board
+            
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(okButton)
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: nil)
+    
+        
+        
+        
+        
 //        self.performSegue(withIdentifier: "goToNewsWKWebView", sender: self)
     }
 }

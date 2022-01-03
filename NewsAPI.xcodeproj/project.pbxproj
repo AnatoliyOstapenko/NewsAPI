@@ -20,6 +20,9 @@
 		FADF5FC127831D1F00C069F8 /* NewsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADF5FC027831D1F00C069F8 /* NewsAPIManager.swift */; };
 		FADF5FC427831DC900C069F8 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADF5FC327831DC900C069F8 /* K.swift */; };
 		FADF5FC7278328E400C069F8 /* SavedNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADF5FC6278328E400C069F8 /* SavedNewsTableViewController.swift */; };
+		FADF5FCE278353F300C069F8 /* NewsWKWeb.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADF5FCD278353F200C069F8 /* NewsWKWeb.storyboard */; };
+		FADF5FD1278354C800C069F8 /* NewsWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADF5FD0278354C800C069F8 /* NewsWKWebViewController.swift */; };
+		FADF5FD52783665A00C069F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADF5FD42783665900C069F8 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		FADF5FC027831D1F00C069F8 /* NewsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIManager.swift; sourceTree = "<group>"; };
 		FADF5FC327831DC900C069F8 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		FADF5FC6278328E400C069F8 /* SavedNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsTableViewController.swift; sourceTree = "<group>"; };
+		FADF5FCD278353F200C069F8 /* NewsWKWeb.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsWKWeb.storyboard; sourceTree = "<group>"; };
+		FADF5FD0278354C800C069F8 /* NewsWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWKWebViewController.swift; sourceTree = "<group>"; };
+		FADF5FD42783665900C069F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADF5FD52783665A00C069F8 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,7 @@
 			children = (
 				FADF5F96278215FD00C069F8 /* NewsAPI */,
 				FADF5F95278215FC00C069F8 /* Products */,
+				FADF5FD32783665800C069F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +97,7 @@
 				FADF5F9B278215FD00C069F8 /* NewsAPIViewController.swift */,
 				FADF5FB027830DD100C069F8 /* NewsAPITableViewCell.swift */,
 				FADF5FC6278328E400C069F8 /* SavedNewsTableViewController.swift */,
+				FADF5FD0278354C800C069F8 /* NewsWKWebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,6 +107,7 @@
 			children = (
 				FADF5FB127830DD100C069F8 /* NewsAPITableViewCell.xib */,
 				FADF5F9D278215FD00C069F8 /* Main.storyboard */,
+				FADF5FCD278353F200C069F8 /* NewsWKWeb.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,6 +120,14 @@
 				FADF5FC327831DC900C069F8 /* K.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FADF5FD32783665800C069F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FADF5FD42783665900C069F8 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADF5FCE278353F300C069F8 /* NewsWKWeb.storyboard in Resources */,
 				FADF5FA72782160200C069F8 /* LaunchScreen.storyboard in Resources */,
 				FADF5FA42782160200C069F8 /* Assets.xcassets in Resources */,
 				FADF5F9F278215FD00C069F8 /* Main.storyboard in Resources */,
@@ -185,6 +204,7 @@
 			files = (
 				FADF5FC427831DC900C069F8 /* K.swift in Sources */,
 				FADF5F9C278215FD00C069F8 /* NewsAPIViewController.swift in Sources */,
+				FADF5FD1278354C800C069F8 /* NewsWKWebViewController.swift in Sources */,
 				FADF5FC127831D1F00C069F8 /* NewsAPIManager.swift in Sources */,
 				FADF5FC7278328E400C069F8 /* SavedNewsTableViewController.swift in Sources */,
 				FADF5F98278215FD00C069F8 /* AppDelegate.swift in Sources */,
