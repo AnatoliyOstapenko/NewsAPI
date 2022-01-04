@@ -44,7 +44,6 @@ class NewsAPITableViewCell: UITableViewCell {
             item.url = self.url
             item.newsImage = self.newsText
             item.title = self.title.text
-            
 
             self.coreDataList.append(item)
             self.saveData()

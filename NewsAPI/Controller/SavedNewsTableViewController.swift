@@ -68,7 +68,7 @@ class SavedNewsTableViewController: UITableViewController {
         let item = array[indexPath.row]
         
         webString = item.url
-        print("webString in second time: \(webString ?? "error")")
+        print("total properties item in second VC: \(item)")
         
         // create action when a row clicked
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -78,7 +78,7 @@ class SavedNewsTableViewController: UITableViewController {
         }
         let goToWeb = UIAlertAction(title: "read news", style: .default) { (alert) in
             
-            print("clicked gotoweb button")
+            self.goToWKWebVC()
             
         }
         let cancelButton = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
