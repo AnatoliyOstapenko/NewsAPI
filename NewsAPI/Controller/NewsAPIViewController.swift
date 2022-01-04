@@ -107,6 +107,7 @@ extension NewsAPIViewController: UITableViewDataSource {
         cell.newsDescription.text = item.description
         cell.publishedAt.text = item.publishedAt
         cell.title.text = item.title
+        cell.url = item.url
         
         // transfer string data to cell
         cell.newsText = item.urlToImage
@@ -134,6 +135,8 @@ extension NewsAPIViewController: UITableViewDelegate {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = array[indexPath.row]
         webString = item.url // catch url from cell
+        
+        print("total item properties in initial VC.....\(item)")
         
         let alert = UIAlertController(title: nil, message: "Whould you like to read the article?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (action) in

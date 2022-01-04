@@ -45,6 +45,7 @@ class SavedNewsTableViewController: UITableViewController {
         cell.publisher.text = item.publisher
         cell.publishedAt.text = item.publishedAt
         cell.title.text = item.title
+        cell.url = item.url
         
         //convert String to UIImage data
         if let urlString = item.newsImage {
@@ -67,7 +68,7 @@ class SavedNewsTableViewController: UITableViewController {
         let item = array[indexPath.row]
         
         webString = item.url
-        print("webString in second time: \(webString ?? "error")")
+        print("total properties item in second VC: \(item)")
         
         // create action when a row clicked
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -77,10 +78,8 @@ class SavedNewsTableViewController: UITableViewController {
         }
         let goToWeb = UIAlertAction(title: "read news", style: .default) { (alert) in
             
-            print("clicked gotoweb button")
+            self.goToWKWebVC()
             
-//            // switch to NewsWKWebView
-//            self.performSegue(withIdentifier: "goToSavedNews", sender: self)
         }
         let cancelButton = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         
@@ -92,21 +91,21 @@ class SavedNewsTableViewController: UITableViewController {
         
     }
     
-//    // MARK: - Prepare Segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//
-//        if segue.identifier == "goToSavedNews" {
-//
-//            let destination = segue.destination as! SavedWKViewController
-//
-//            guard let urlString = webString else { return }
-//            destination.loadWeb(urlString)
-//
-//
-//        }
-//
-//    }
+    func goToWKWebVC() {
+
+        // add a storyboard that should receive data from the current VC
+        let storyboard = UIStoryboard(name: "NewsWKWeb", bundle: nil)
+        // add VC that should receive data from the current VC
+        guard let newsVC = storyboard.instantiateViewController(identifier: "NewsWKWeb") as? NewsWKWebViewController else { return }
+         
+        newsVC.url = webString
+        
+        show(newsVC, sender: nil) // switch to a next screen
+        
+        
+        
+    }
+
     
     
     //MARK: - Core Data Method
