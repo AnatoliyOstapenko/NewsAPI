@@ -12,10 +12,9 @@ class NewsAPITableViewCell: UITableViewCell {
     
     var coreDataList = [NewsCoreData]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
-    var newsVC = NewsAPIViewController()
+
     var newsText: String?
+    var url: String?
     
     // create UIViewController class to use present in button
     var tableViewController: UIViewController?
@@ -42,10 +41,11 @@ class NewsAPITableViewCell: UITableViewCell {
             item.newsDescription = self.newsDescription.text
             item.publishedAt = self.publishedAt.text
             item.publisher = self.publisher.text
-            item.url = self.newsVC.webString
+            item.url = self.url
             item.newsImage = self.newsText
             item.title = self.title.text
             
+
             self.coreDataList.append(item)
             self.saveData()
         }
