@@ -113,9 +113,15 @@ extension NewsAPIViewController: UITableViewDataSource {
         cell.newsText = item.urlToImage
         
         // Convert string to UIImage anf dispatch to cell
-        if let url = URL(string: item.urlToImage) {
+        guard let image = item.urlToImage else { return UITableViewCell()} // urlToImage is optional
+        if let url = URL(string: image) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard error == nil, let data = data else { return }
+                guard error == nil, let data = data else {
+                    print("No image on site")
+                    DispatchQueue.main.async {
+                        cell.newsImage.image = UIImage(named: "noImage")
+                    }
+                    return }
                 
                 DispatchQueue.main.async {
                     cell.newsImage.image = UIImage(data: data)
@@ -135,8 +141,6 @@ extension NewsAPIViewController: UITableViewDelegate {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = array[indexPath.row]
         webString = item.url // catch url from cell
-        
-        print("total item properties in initial VC.....\(item)")
         
         let alert = UIAlertController(title: nil, message: "Whould you like to read the article?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (action) in

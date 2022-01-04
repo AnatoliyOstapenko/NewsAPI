@@ -19,7 +19,7 @@ struct Articles: Codable {
     let publishedAt: String
     let title: String
     let url: String
-    let urlToImage: String
+    let urlToImage: String? // it should be optional in case not available image on site
     
 }
 struct Name: Codable {

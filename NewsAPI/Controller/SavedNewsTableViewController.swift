@@ -68,8 +68,7 @@ class SavedNewsTableViewController: UITableViewController {
         let item = array[indexPath.row]
         
         webString = item.url
-        print("total properties item in second VC: \(item)")
-        
+
         // create action when a row clicked
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -99,11 +98,7 @@ class SavedNewsTableViewController: UITableViewController {
         guard let newsVC = storyboard.instantiateViewController(identifier: "NewsWKWeb") as? NewsWKWebViewController else { return }
          
         newsVC.url = webString
-        
         show(newsVC, sender: nil) // switch to a next screen
-        
-        
-        
     }
 
     

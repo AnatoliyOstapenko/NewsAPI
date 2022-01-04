@@ -13,12 +13,16 @@ struct NewsAPIManager {
     // Handling text from
     init(text: String) {
         
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.date(from: "yyyy-MM-DD")
-        let currentDate = formatter.string(from: date)
+//        let date = Date()
+//        let formatter = DateFormatter()
+//        formatter.date(from: "yyyy-MM-DD")
+//        let currentDate = formatter.string(from: date)
         
-        let initialURL = "https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&from=\(currentDate)&q=\(text)"
+        //&from=\(currentDate)
+        
+        let initialURL = "https://newsapi.org/v2/everything?sortBy=publishedAt&apiKey=5da05c606b6846f7b5dbf3bd05653340&q=world"
+        
+        //"https://newsapi.org/v2/everything?sortBy=publishedAt&apiKey=\(K.keyAPI)&q=\(text)"
         
         self.initialURL = initialURL
     }
