@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="360" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lzi-TC-van">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search your favorite theme" id="uFa-SL-761">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -25,12 +25,51 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oXg-PR-SWl">
+                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00I-1k-OAS">
+                                        <rect key="frame" x="0.0" y="5" width="138" height="30"/>
+                                        <state key="normal" title="category">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="categoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU0-3S-Xzy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lr-pM-LQe">
+                                        <rect key="frame" x="138" y="5" width="138" height="30"/>
+                                        <state key="normal" title="country">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="countryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="khP-qK-kyM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-HQ-MAq">
+                                        <rect key="frame" x="276" y="5" width="138" height="30"/>
+                                        <state key="normal" title="sources">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sourcesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nqe-vM-ECp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14508003" green="0.14511102440000001" blue="0.1450734437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MFh-JO-iEe"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Lzi-TC-van" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2bT-2G-dPG"/>
+                            <constraint firstItem="oXg-PR-SWl" firstAttribute="top" secondItem="Lzi-TC-van" secondAttribute="bottom" id="18C-Vo-Z2X"/>
                             <constraint firstItem="Lzi-TC-van" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="E90-Q7-fBd"/>
+                            <constraint firstItem="oXg-PR-SWl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ix8-x0-f27"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oXg-PR-SWl" secondAttribute="trailing" id="JyC-f2-7dO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oXg-PR-SWl" secondAttribute="bottom" id="fXX-h1-4Ot"/>
                             <constraint firstItem="Lzi-TC-van" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iR6-ow-lKA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lzi-TC-van" secondAttribute="trailing" id="txB-BZ-8JP"/>
                         </constraints>
@@ -55,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="-13"/>
+            <point key="canvasLocation" x="738" y="-13"/>
         </scene>
         <!--Saved News Table View Controller-->
         <scene sceneID="tJs-VS-3l4">

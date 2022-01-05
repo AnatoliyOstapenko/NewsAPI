@@ -13,6 +13,8 @@ class NewsAPIViewController: UIViewController {
     var array = [Articles]()
     var newsManager = NewsAPIManager.init(text: "world", sortBy: "popularity")
     var webString: String?
+    var request = Request()
+   
 
     
     // create UIRefreshControl
@@ -26,6 +28,8 @@ class NewsAPIViewController: UIViewController {
     
     @IBOutlet weak var newsSearchBar: UISearchBar!
     @IBOutlet weak var newsTableView: UITableView!
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ class NewsAPIViewController: UIViewController {
         newsTableView.delegate = self
         
         newsSearchBar.delegate = self
+
         
         navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
         
@@ -86,6 +91,32 @@ class NewsAPIViewController: UIViewController {
         newsManager = NewsAPIManager.init(text: "world", sortBy: K.sortBy)
         print(newsManager)
         updateUI()
+    }
+    
+    @IBAction func categoryButtonPressed(_ sender: UIButton) {
+        
+        let categoryAlert = UIAlertController(title: nil, message: "choose category", preferredStyle: .alert)
+        
+        categoryAlert.addTextField()
+        
+        let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            guard let text = categoryAlert.textFields?.first?.text else { return }
+            
+            print(text)
+            
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        categoryAlert.addAction(okButton)
+        categoryAlert.addAction(cancelButton)
+        
+        present(categoryAlert, animated: true, completion: nil)
+    }
+    
+    @IBAction func countryButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func sourcesButtonPressed(_ sender: UIButton) {
     }
     
     
@@ -175,6 +206,31 @@ extension NewsAPIViewController: UISearchBarDelegate {
         self.newsManager = NewsAPIManager.init(text: text, sortBy: "popularity")
         updateUI()
         
+    }
+    
+}
+// MARK:- UIPickerViewDataSource Method
+
+extension NewsAPIViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return request.category.count
+    }
+    
+    
+}
+// MARK:- UIPickerViewAccessibilityDelegate Method
+
+extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return request.category[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(request.category[row])
     }
     
 }

@@ -10,6 +10,10 @@ struct NewsAPIManager {
  
     let initialURL: String
     
+    
+    
+    
+    
     // Handling text from
     init(text: String, sortBy: String) {
         
