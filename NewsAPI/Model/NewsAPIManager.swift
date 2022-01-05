@@ -11,18 +11,11 @@ struct NewsAPIManager {
     let initialURL: String
     
     // Handling text from
-    init(text: String) {
+    init(text: String, sortBy: String) {
         
-//        let date = Date()
-//        let formatter = DateFormatter()
-//        formatter.date(from: "yyyy-MM-DD")
-//        let currentDate = formatter.string(from: date)
         
-        //&from=\(currentDate)
+        let initialURL = "https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)"
         
-        let initialURL = "https://newsapi.org/v2/everything?sortBy=publishedAt&apiKey=5da05c606b6846f7b5dbf3bd05653340&q=world"
-        
-        //"https://newsapi.org/v2/everything?sortBy=publishedAt&apiKey=\(K.keyAPI)&q=\(text)"
         
         self.initialURL = initialURL
     }

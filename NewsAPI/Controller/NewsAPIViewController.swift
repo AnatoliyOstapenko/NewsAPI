@@ -11,8 +11,9 @@ class NewsAPIViewController: UIViewController {
     
     
     var array = [Articles]()
-    var newsManager = NewsAPIManager.init(text: "world")
+    var newsManager = NewsAPIManager.init(text: "world", sortBy: "popularity")
     var webString: String?
+
     
     // create UIRefreshControl
     let newsRefreshControl: UIRefreshControl = {
@@ -33,6 +34,8 @@ class NewsAPIViewController: UIViewController {
         newsTableView.delegate = self
         
         newsSearchBar.delegate = self
+        
+        navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
         
         // registration nib
         newsTableView.register(UINib(nibName: "NewsAPITableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -75,11 +78,16 @@ class NewsAPIViewController: UIViewController {
          
         newsVC.url = webString
         
-        show(newsVC, sender: nil) // switch to a next screen
-        
-        
-        
+        show(newsVC, sender: nil) // switch to a next screenN
     }
+    
+    @IBAction func sortingButtonPressed(_ sender: UIBarButtonItem) {
+        
+        newsManager = NewsAPIManager.init(text: "world", sortBy: K.sortBy)
+        print(newsManager)
+        updateUI()
+    }
+    
     
 }
 
@@ -119,7 +127,7 @@ extension NewsAPIViewController: UITableViewDataSource {
                 guard error == nil, let data = data else {
                     print("No image on site")
                     DispatchQueue.main.async {
-                        cell.newsImage.image = UIImage(named: "noImage")
+                        cell.newsImage.image = UIImage(named: "NoImage")
                     }
                     return }
                 
@@ -164,7 +172,7 @@ extension NewsAPIViewController: UISearchBarDelegate {
         guard let text = searchBar.text else { return }
         
         // add text to initialString in NewsManager
-        self.newsManager = NewsAPIManager.init(text: text)
+        self.newsManager = NewsAPIManager.init(text: text, sortBy: "popularity")
         updateUI()
         
     }
