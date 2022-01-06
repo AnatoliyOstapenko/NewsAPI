@@ -75,7 +75,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ydN-Ys-EC5">
-                        <barButtonItem key="leftBarButtonItem" title="Sort by publishedAt" id="Jxg-sV-g7c">
+                        <barButtonItem key="leftBarButtonItem" image="paperplane.circle" catalog="system" id="Jxg-sV-g7c">
                             <connections>
                                 <action selector="sortingButtonPressed:" destination="BYZ-38-t0r" id="hF6-c3-c9k"/>
                             </connections>
@@ -149,6 +149,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paperplane.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

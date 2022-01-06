@@ -14,13 +14,14 @@ struct K {
     static let sortBy = "publishedAt"
     
     
+    
     static func customAlert(_ textAlert: String, _ viewController: UIViewController, _ vc: UIViewController) {
         
         // Create custom alert for reusing in different buttons
         let alert = UIAlertController(title: nil, message: textAlert, preferredStyle: .alert)
         alert.setValue(vc, forKey: "contentViewController")
-        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
-        alert.addAction(cancel)
+        let done = UIAlertAction(title: "done", style: .cancel, handler: nil)
+        alert.addAction(done)
         viewController.present(alert, animated: true, completion: nil)
         
         

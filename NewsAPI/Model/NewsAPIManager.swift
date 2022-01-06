@@ -8,20 +8,30 @@
 import Foundation
 struct NewsAPIManager {
  
-    let initialURL: String
+    var initialURL: String
 
-    // Handling text from
     init(text: String, sortBy: String) {
         
         
-        let initialURL = "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)&sources=&country=&cattegory="
-        
+        let urlEverything = "https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)"
+        // "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)&sources=\(sources)&country=\(country)&cattegory=\(category)"
         // https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)
         
-        print("initial URL ..... \(initialURL)")
+        print("initial URL ..... \(urlEverything)")
         
-        self.initialURL = initialURL
+        self.initialURL = urlEverything
     }
+    
+    init(sources: String, country: String, category: String) {
+        
+        
+        let urlTopHeadlines = "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&sources=\(sources)&country=\(country)&cattegory=\(category)"
+        
+        print("initial URL ..... \(urlTopHeadlines)")
+        
+        self.initialURL = urlTopHeadlines
+    }
+    
     
     func getData(completion: @escaping(Result<NewsAPIModel, Error>) -> Void) {
         

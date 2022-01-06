@@ -11,7 +11,7 @@ class NewsAPIViewController: UIViewController {
     
     
     var array = [Articles]()
-    var newsManager = NewsAPIManager.init(text: "world", sortBy: "")
+    var newsManager = NewsAPIManager.init(text: "world", sortBy: "popularity")
     var webString: String?
     var request = Request()
     
@@ -87,9 +87,9 @@ class NewsAPIViewController: UIViewController {
     }
     
     @IBAction func sortingButtonPressed(_ sender: UIBarButtonItem) {
-        
+
         newsManager = NewsAPIManager.init(text: "world", sortBy: K.sortBy)
-        print(newsManager)
+        print("newsManager")
         updateUI()
     }
     
@@ -255,8 +255,12 @@ extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
         
         switch pic {
         case 1:
+            newsManager = NewsAPIManager(sources: "", country: "", category: request.category[row])
+            updateUI()
             print(request.category[row])
         case 2:
+            newsManager = NewsAPIManager(sources: "", country: request.country[row], category: "")
+            updateUI()
             print(request.country[row])
         default:
             print("no proper request category")
