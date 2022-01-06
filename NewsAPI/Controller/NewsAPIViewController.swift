@@ -94,6 +94,19 @@ class NewsAPIViewController: UIViewController {
     }
     
     @IBAction func sourcesButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: "type name of sources", preferredStyle: .alert)
+        
+        alert.addTextField()
+        let done = UIAlertAction(title: "done", style: .default) { (action) in
+            guard let text = alert.textFields?.first?.text else { return }
+            
+            self.newsManager = NewsAPIManager(sources: text, country: "", category: "")
+        }
+        alert.addAction(done)
+        present(alert, animated: true) {
+            self.updateUI() // set closure to update screen
+        }
+        
         
         
     }
