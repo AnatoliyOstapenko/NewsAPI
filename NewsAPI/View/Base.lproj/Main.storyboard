@@ -34,7 +34,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="categoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU0-3S-Xzy"/>
+                                            <action selector="requestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU0-3S-Xzy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lr-pM-LQe">
@@ -43,7 +43,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="countryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="khP-qK-kyM"/>
+                                            <action selector="requestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pw7-fA-Xh9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-HQ-MAq">
@@ -52,7 +52,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="sourcesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nqe-vM-ECp"/>
+                                            <action selector="requestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dNC-M6-swk"/>
                                         </connections>
                                     </button>
                                 </subviews>

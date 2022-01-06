@@ -93,13 +93,21 @@ class NewsAPIViewController: UIViewController {
         updateUI()
     }
     
-    @IBAction func categoryButtonPressed(_ sender: UIButton) {
+    @IBAction func requestButtonPressed(_ sender: UIButton) {
+        
+        switch sender.currentTitle {
+        case "category":
+            pic = 1
+        case "language":
+            pic = 2
+        case "country":
+            pic = 3
+        default:
+            print("There is no current title")
+        }
 
-        pic = 1
         print("current tag is - \(pic)")
-        
-        
-        
+ 
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: 250,height: 100)
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
@@ -108,18 +116,10 @@ class NewsAPIViewController: UIViewController {
         vc.view.addSubview(pickerView)
         
         K.customAlert("choose a category", self, vc)
-//        let categoryAlert = UIAlertController(title: nil, message: "choose a categoty", preferredStyle: .alert)
-//        categoryAlert.setValue(vc, forKey: "contentViewController")
-//        categoryAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-//        categoryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        self.present(categoryAlert, animated: true)
+
     }
     
-    @IBAction func countryButtonPressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func sourcesButtonPressed(_ sender: UIButton) {
-    }
+
     
     
 }
