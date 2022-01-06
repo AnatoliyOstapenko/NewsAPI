@@ -125,6 +125,7 @@ class SavedNewsTableViewController: UITableViewController {
     func deleteData(_ item: NewsCoreData) {
         
         context.delete(item)
+        loadData()
         saveData()
         
     }
