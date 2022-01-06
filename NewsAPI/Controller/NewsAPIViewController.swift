@@ -15,12 +15,8 @@ class NewsAPIViewController: UIViewController {
     var webString: String?
     var request = Request()
     
+    var pic = 0
     
-//    var categoryPickerView = UIPickerView()
-//    var languagePickerView = UIPickerView()
-//    var countryPickerView = UIPickerView()
-   
-
     
     // create UIRefreshControl
     let newsRefreshControl: UIRefreshControl = {
@@ -42,17 +38,6 @@ class NewsAPIViewController: UIViewController {
         newsTableView.dataSource = self
         newsTableView.delegate = self
         newsSearchBar.delegate = self
-        
-//        categoryPickerView.dataSource = self
-//        categoryPickerView.delegate = self
-//        languagePickerView.dataSource = self
-//        languagePickerView.delegate = self
-//        countryPickerView.dataSource = self
-//        countryPickerView.delegate = self
-//
-//        categoryPickerView.tag = 1
-//        languagePickerView.tag = 2
-//        countryPickerView.tag = 3
 
         navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
         
@@ -109,12 +94,17 @@ class NewsAPIViewController: UIViewController {
     
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
         
+        
+        
+        pic = 1
+        print("current tag is - \(pic)")
+        
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: 250,height: 100)
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        vc.view.addSubview(pickerView)
+        let categoryPickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        categoryPickerView.delegate = self
+        categoryPickerView.dataSource = self
+        vc.view.addSubview(categoryPickerView)
         let categoryAlert = UIAlertController(title: nil, message: "choose a categoty", preferredStyle: .alert)
         categoryAlert.setValue(vc, forKey: "contentViewController")
         categoryAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
@@ -227,7 +217,7 @@ extension NewsAPIViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        switch pickerView.tag {
+        switch pic {
         case 1:
             return request.category.count
         case 2:
@@ -245,7 +235,7 @@ extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        switch pickerView.tag {
+        switch pic {
         case 1:
             return request.category[row]
         case 2:
@@ -255,8 +245,16 @@ extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(request.category[row])
+        
+        switch pic {
+        case 1:
+            print(request.category[row])
+        case 2:
+            print(request.language[row])
+        default:
+            print(request.country[row])
     }
     
 }
 
+}
