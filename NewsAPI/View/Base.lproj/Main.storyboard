@@ -30,7 +30,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00I-1k-OAS">
                                         <rect key="frame" x="0.0" y="5" width="138" height="30"/>
-                                        <state key="normal" title="category">
+                                        <state key="normal" title="country">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -39,7 +39,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lr-pM-LQe">
                                         <rect key="frame" x="138" y="5" width="138" height="30"/>
-                                        <state key="normal" title="country">
+                                        <state key="normal" title="category">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -75,7 +75,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ydN-Ys-EC5">
-                        <barButtonItem key="leftBarButtonItem" image="paperplane.circle" catalog="system" id="Jxg-sV-g7c">
+                        <barButtonItem key="leftBarButtonItem" title="publishedAt" id="Jxg-sV-g7c">
                             <connections>
                                 <action selector="sortingButtonPressed:" destination="BYZ-38-t0r" id="hF6-c3-c9k"/>
                             </connections>
@@ -94,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="-13"/>
+            <point key="canvasLocation" x="700" y="-13"/>
         </scene>
         <!--Saved News Table View Controller-->
         <scene sceneID="tJs-VS-3l4">
@@ -149,7 +149,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="paperplane.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

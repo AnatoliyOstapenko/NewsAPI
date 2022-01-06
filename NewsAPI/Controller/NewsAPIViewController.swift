@@ -119,7 +119,7 @@ class NewsAPIViewController: UIViewController {
         pickerView.dataSource = self
         vc.view.addSubview(pickerView)
         
-        K.customAlert("choose a category", self, vc)
+        K.customAlert("First choose a country", self, vc)
 
     }
     
@@ -255,7 +255,7 @@ extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
         
         switch pic {
         case 1:
-            newsManager = NewsAPIManager(sources: "", country: "", category: request.category[row])
+            newsManager = NewsAPIManager(sources: "", country: request.country[row], category: request.category[row])
             updateUI()
             print(request.category[row])
         case 2:
