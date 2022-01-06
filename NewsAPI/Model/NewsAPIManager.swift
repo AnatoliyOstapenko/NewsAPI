@@ -14,8 +14,11 @@ struct NewsAPIManager {
     init(text: String, sortBy: String) {
         
         
-        let initialURL = "https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)"
+        let initialURL = "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)&sources=&country=&cattegory="
         
+        // https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)
+        
+        print("initial URL ..... \(initialURL)")
         
         self.initialURL = initialURL
     }

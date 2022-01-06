@@ -11,7 +11,7 @@ class NewsAPIViewController: UIViewController {
     
     
     var array = [Articles]()
-    var newsManager = NewsAPIManager.init(text: "world", sortBy: "popularity")
+    var newsManager = NewsAPIManager.init(text: "world", sortBy: "")
     var webString: String?
     var request = Request()
     
@@ -93,15 +93,19 @@ class NewsAPIViewController: UIViewController {
         updateUI()
     }
     
+    @IBAction func sourcesButtonPressed(_ sender: UIButton) {
+        
+        
+    }
+    
+    
     @IBAction func requestButtonPressed(_ sender: UIButton) {
         
         switch sender.currentTitle {
         case "category":
             pic = 1
-        case "language":
-            pic = 2
         case "country":
-            pic = 3
+            pic = 2
         default:
             print("There is no current title")
         }
@@ -224,9 +228,9 @@ extension NewsAPIViewController: UIPickerViewDataSource {
         case 1:
             return request.category.count
         case 2:
-            return request.language.count
+            return request.country.count
         default:
-            return request.country.count // tag 3 by default
+            return 1
         }
     }
     
@@ -242,9 +246,9 @@ extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
         case 1:
             return request.category[row]
         case 2:
-            return request.language[row]
-        default:
             return request.country[row]
+        default:
+            return "no proper request category"
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -253,9 +257,9 @@ extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
         case 1:
             print(request.category[row])
         case 2:
-            print(request.language[row])
-        default:
             print(request.country[row])
+        default:
+            print("no proper request category")
     }
     
 }
