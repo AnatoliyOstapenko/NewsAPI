@@ -16,7 +16,7 @@ class NewsAPIViewController: UIViewController {
     var request = Request()
     
     var pic = 0
-    
+
     
     // create UIRefreshControl
     let newsRefreshControl: UIRefreshControl = {
@@ -38,6 +38,7 @@ class NewsAPIViewController: UIViewController {
         newsTableView.dataSource = self
         newsTableView.delegate = self
         newsSearchBar.delegate = self
+
 
         navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
         
@@ -93,23 +94,25 @@ class NewsAPIViewController: UIViewController {
     }
     
     @IBAction func categoryButtonPressed(_ sender: UIButton) {
-        
-        
-        
+
         pic = 1
         print("current tag is - \(pic)")
         
+        
+        
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: 250,height: 100)
-        let categoryPickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-        categoryPickerView.delegate = self
-        categoryPickerView.dataSource = self
-        vc.view.addSubview(categoryPickerView)
-        let categoryAlert = UIAlertController(title: nil, message: "choose a categoty", preferredStyle: .alert)
-        categoryAlert.setValue(vc, forKey: "contentViewController")
-        categoryAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-        categoryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(categoryAlert, animated: true)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        vc.view.addSubview(pickerView)
+        
+        K.customAlert("choose a category", self, vc)
+//        let categoryAlert = UIAlertController(title: nil, message: "choose a categoty", preferredStyle: .alert)
+//        categoryAlert.setValue(vc, forKey: "contentViewController")
+//        categoryAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+//        categoryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        self.present(categoryAlert, animated: true)
     }
     
     @IBAction func countryButtonPressed(_ sender: UIButton) {
