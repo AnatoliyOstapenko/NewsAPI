@@ -34,7 +34,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="categoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU0-3S-Xzy"/>
+                                            <action selector="requestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU0-3S-Xzy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lr-pM-LQe">
@@ -43,7 +43,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="countryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="khP-qK-kyM"/>
+                                            <action selector="requestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pw7-fA-Xh9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-HQ-MAq">
@@ -52,7 +52,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="sourcesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nqe-vM-ECp"/>
+                                            <action selector="sourcesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AEC-hx-kR4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -75,7 +75,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ydN-Ys-EC5">
-                        <barButtonItem key="leftBarButtonItem" title="Sort by publishedAt" id="Jxg-sV-g7c">
+                        <barButtonItem key="leftBarButtonItem" image="paperplane.circle" catalog="system" id="Jxg-sV-g7c">
                             <connections>
                                 <action selector="sortingButtonPressed:" destination="BYZ-38-t0r" id="hF6-c3-c9k"/>
                             </connections>
@@ -149,6 +149,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paperplane.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

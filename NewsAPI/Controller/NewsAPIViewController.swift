@@ -14,7 +14,8 @@ class NewsAPIViewController: UIViewController {
     var newsManager = NewsAPIManager.init(text: "world", sortBy: "popularity")
     var webString: String?
     var request = Request()
-   
+    
+    var pic = 0
 
     
     // create UIRefreshControl
@@ -36,10 +37,9 @@ class NewsAPIViewController: UIViewController {
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
-        
         newsSearchBar.delegate = self
 
-        
+
         navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
         
         // registration nib
@@ -87,37 +87,43 @@ class NewsAPIViewController: UIViewController {
     }
     
     @IBAction func sortingButtonPressed(_ sender: UIBarButtonItem) {
-        
+
         newsManager = NewsAPIManager.init(text: "world", sortBy: K.sortBy)
-        print(newsManager)
+        print("newsManager")
         updateUI()
     }
     
-    @IBAction func categoryButtonPressed(_ sender: UIButton) {
-        
-        let categoryAlert = UIAlertController(title: nil, message: "choose category", preferredStyle: .alert)
-        
-        categoryAlert.addTextField()
-        
-        let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
-            
-            guard let text = categoryAlert.textFields?.first?.text else { return }
-            
-            print(text)
-            
-        }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        categoryAlert.addAction(okButton)
-        categoryAlert.addAction(cancelButton)
-        
-        present(categoryAlert, animated: true, completion: nil)
-    }
-    
-    @IBAction func countryButtonPressed(_ sender: UIButton) {
-    }
-    
     @IBAction func sourcesButtonPressed(_ sender: UIButton) {
+        
+        
     }
+    
+    
+    @IBAction func requestButtonPressed(_ sender: UIButton) {
+        
+        switch sender.currentTitle {
+        case "category":
+            pic = 1
+        case "country":
+            pic = 2
+        default:
+            print("There is no current title")
+        }
+
+        print("current tag is - \(pic)")
+ 
+        let vc = UIViewController()
+        vc.preferredContentSize = CGSize(width: 250,height: 100)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        vc.view.addSubview(pickerView)
+        
+        K.customAlert("choose a category", self, vc)
+
+    }
+    
+
     
     
 }
@@ -213,11 +219,19 @@ extension NewsAPIViewController: UISearchBarDelegate {
 
 extension NewsAPIViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return request.category.count
+        
+        switch pic {
+        case 1:
+            return request.category.count
+        case 2:
+            return request.country.count
+        default:
+            return 1
+        }
     }
     
     
@@ -227,11 +241,31 @@ extension NewsAPIViewController: UIPickerViewDataSource {
 extension NewsAPIViewController: UIPickerViewAccessibilityDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return request.category[row]
+        
+        switch pic {
+        case 1:
+            return request.category[row]
+        case 2:
+            return request.country[row]
+        default:
+            return "no proper request category"
+        }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(request.category[row])
+        
+        switch pic {
+        case 1:
+            newsManager = NewsAPIManager(sources: "", country: "", category: request.category[row])
+            updateUI()
+            print(request.category[row])
+        case 2:
+            newsManager = NewsAPIManager(sources: "", country: request.country[row], category: "")
+            updateUI()
+            print(request.country[row])
+        default:
+            print("no proper request category")
     }
     
 }
 
+}
