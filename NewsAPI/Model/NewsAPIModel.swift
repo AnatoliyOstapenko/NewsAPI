@@ -14,7 +14,7 @@ struct NewsAPIModel: Codable {
 
 struct Articles: Codable {
     
-    let source: Name
+    let source: Name?
     let description: String
     let publishedAt: String
     let title: String

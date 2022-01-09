@@ -26,4 +26,13 @@ struct K {
         
         
     }
+    
+    static func issueAlert(_ textAlert: String, _ viewControler: UIViewController) {
+        // Create custom alert for reusing in different buttons
+        let alert = UIAlertController(title: nil, message: textAlert, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        viewControler.present(alert, animated: true, completion: nil)
+    }
+    
 }

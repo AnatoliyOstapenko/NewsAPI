@@ -17,7 +17,7 @@ struct NewsAPIManager {
         // "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)&sources=\(sources)&country=\(country)&cattegory=\(category)"
         // https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)
         
-        print("initial URL ..... \(urlEverything)")
+        print("urlEverything ..... \(urlEverything)")
         
         self.initialURL = urlEverything
     }
@@ -27,7 +27,7 @@ struct NewsAPIManager {
         
         let urlTopHeadlines = "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&sources=\(sources)&country=\(country)&cattegory=\(category)"
         
-        print("initial URL ..... \(urlTopHeadlines)")
+        print("urlTopHeadlines ..... \(urlTopHeadlines)")
         
         self.initialURL = urlTopHeadlines
     }

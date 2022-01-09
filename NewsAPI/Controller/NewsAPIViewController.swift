@@ -14,7 +14,6 @@ class NewsAPIViewController: UIViewController {
     var newsManager = NewsAPIManager.init(text: "world", sortBy: "popularity")
     var webString: String?
     var request = Request()
-    
     var pic = 0
 
     
@@ -100,16 +99,23 @@ class NewsAPIViewController: UIViewController {
         alert.textFields?.first?.placeholder = "type name of source"
         let done = UIAlertAction(title: "done", style: .default) { (action) in
             
-            guard let text = alert.textFields?.first?.text else { return }
+            guard let text = alert.textFields?.first?.text else {
+                
+                K.issueAlert("Try type any other source", self)
+                return
+                
+            }
             
-            self.newsManager = NewsAPIManager(sources: text, country: "", category: "")
+            let replacedText = text.replacingOccurrences(of: " ", with: "-") // replaced space to dash
+            
+            print("replaced text: \(replacedText)")
+            
+            self.newsManager = NewsAPIManager(sources: replacedText, country: "", category: "")
             self.updateUI()
         }
         alert.addAction(done)
         present(alert, animated: true, completion: nil)
-        
-        
-        
+
     }
     
     
@@ -124,7 +130,7 @@ class NewsAPIViewController: UIViewController {
             print("There is no current title")
         }
 
-        print("current tag is - \(pic)")
+       // Create VC that contains PickerView
  
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: 250,height: 100)
@@ -161,8 +167,10 @@ extension NewsAPIViewController: UITableViewDataSource {
         // get row from tableview
         let item = array[indexPath.row]
         
+        guard let source = item.source?.publisher else { return UITableViewCell() } // source is optional
+
         //dispatch data to cell
-        cell.publisher.text = item.source.publisher
+        cell.publisher.text = source
         cell.newsDescription.text = item.description
         cell.publishedAt.text = item.publishedAt
         cell.title.text = item.title
@@ -191,6 +199,7 @@ extension NewsAPIViewController: UITableViewDataSource {
         return cell
   
     }
+
     
 }
 // MARK: - TableView Delegate Method
@@ -214,6 +223,12 @@ extension NewsAPIViewController: UITableViewDelegate {
         present(alert, animated: true, completion: nil)
 
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row == array.count - 1 {
+//            updateUI()
+//        }
+//    }
 }
 
 // MARK: - UISearchBarDelegate
