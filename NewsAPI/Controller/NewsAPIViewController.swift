@@ -68,7 +68,7 @@ class NewsAPIViewController: UIViewController {
                     self?.newsTableView.reloadData()
                 }
             case .failure(let error):
-                print(error)
+                print("There is a problem with get data from url: \(error)")
             }
         }
     }
@@ -82,8 +82,9 @@ class NewsAPIViewController: UIViewController {
          
         newsVC.url = webString
         
-        show(newsVC, sender: nil) // switch to a next screenN
+        show(newsVC, sender: nil) // switch to a next screen
     }
+    
     
     @IBAction func sortingButtonPressed(_ sender: UIBarButtonItem) {
 
@@ -224,11 +225,29 @@ extension NewsAPIViewController: UITableViewDelegate {
 
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if indexPath.row == array.count - 1 {
-//            updateUI()
-//        }
-//    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == array.count - 1 {
+
+            newsManager.getData { [weak self] result in
+                    switch result {
+                    case .success(let news):
+                        self?.array = news.articles
+                        
+                        DispatchQueue.main.async {
+                            self?.newsTableView.reloadData()
+                        }
+                    case .failure(let error):
+                        print("There is a problem with get data from url: \(error)")
+                    }
+                }
+    
+
+            
+            
+            
+            
+        }
+    }
 }
 
 // MARK: - UISearchBarDelegate
