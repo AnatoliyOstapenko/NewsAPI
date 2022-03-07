@@ -39,7 +39,7 @@ class NewsAPIViewController: UIViewController {
         newsSearchBar.delegate = self
 
 
-        navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
+        //navigationController?.navigationBar.tintColor = .black // Back botton color is changed to white
         
         // registration nib
         newsTableView.register(UINib(nibName: "NewsAPITableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")

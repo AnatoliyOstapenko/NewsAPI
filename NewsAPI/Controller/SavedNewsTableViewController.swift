@@ -18,7 +18,7 @@ class SavedNewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.tintColor = .white // Back botton color is changed to white
+        navigationController?.navigationBar.tintColor = .black // Back botton color is changed to white
         
         // registration nib
         tableView.register(UINib(nibName: "NewsAPITableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
