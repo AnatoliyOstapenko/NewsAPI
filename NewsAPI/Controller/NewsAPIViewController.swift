@@ -37,9 +37,6 @@ class NewsAPIViewController: UIViewController {
         newsTableView.dataSource = self
         newsTableView.delegate = self
         newsSearchBar.delegate = self
-
-
-        //navigationController?.navigationBar.tintColor = .black // Back botton color is changed to white
         
         // registration nib
         newsTableView.register(UINib(nibName: "NewsAPITableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -52,23 +49,24 @@ class NewsAPIViewController: UIViewController {
     
     // Add update data when user pull screen
     @objc private func refresh(sender: UIRefreshControl) {
-        
         updateUI()
         sender.endRefreshing()
     }
     
     
     func updateUI() {
-        newsManager.getData { [weak self] result in
-            switch result {
-            case .success(let news):
-                self?.array = news.articles
-                
-                DispatchQueue.main.async {
-                    self?.newsTableView.reloadData()
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.async {
+            self.newsManager.getData { [weak self] result in
+                switch result {
+                case .success(let news):
+                    DispatchQueue.main.async {
+                        self?.array = news.articles
+                        self?.newsTableView.reloadData()
+                    }
+                case .failure(let error):
+                    print("There is a problem with get data from url: \(error)")
                 }
-            case .failure(let error):
-                print("There is a problem with get data from url: \(error)")
             }
         }
     }
@@ -81,7 +79,6 @@ class NewsAPIViewController: UIViewController {
         guard let newsVC = storyboard.instantiateViewController(identifier: "NewsWKWeb") as? NewsWKWebViewController else { return }
          
         newsVC.url = webString
-        
         show(newsVC, sender: nil) // switch to a next screen
     }
     
@@ -101,22 +98,18 @@ class NewsAPIViewController: UIViewController {
         let done = UIAlertAction(title: "done", style: .default) { (action) in
             
             guard let text = alert.textFields?.first?.text else {
-                
                 K.issueAlert("Try type any other source", self)
                 return
-                
             }
             
             let replacedText = text.replacingOccurrences(of: " ", with: "-") // replaced space to dash
-            
-            print("replaced text: \(replacedText)")
-            
             self.newsManager = NewsAPIManager(sources: replacedText, country: "", category: "")
-            self.updateUI()
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
         }
         alert.addAction(done)
         present(alert, animated: true, completion: nil)
-
     }
     
     
