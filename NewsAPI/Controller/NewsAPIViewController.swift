@@ -25,6 +25,12 @@ class NewsAPIViewController: UIViewController {
         return refreshControl
     }()
     
+    let spinner: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .large
+        return indicator
+    }()
+    
     
     @IBOutlet weak var newsSearchBar: UISearchBar!
     @IBOutlet weak var newsTableView: UITableView!
@@ -45,6 +51,10 @@ class NewsAPIViewController: UIViewController {
         
         // add UIRefreshControl to TableView
         newsTableView.refreshControl = newsRefreshControl
+        
+        // add spiner to TableView
+        spinner.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+        view.addSubview(spinner)
     }
     
     // Add update data when user pull screen
@@ -55,6 +65,7 @@ class NewsAPIViewController: UIViewController {
     
     
     func updateUI() {
+        spinner.startAnimating()
         let queue = DispatchQueue.global(qos: .utility)
         queue.async {
             self.newsManager.getData { [weak self] result in
@@ -63,6 +74,7 @@ class NewsAPIViewController: UIViewController {
                     DispatchQueue.main.async {
                         self?.array = news.articles
                         self?.newsTableView.reloadData()
+                        self?.spinner.stopAnimating()
                     }
                 case .failure(let error):
                     print("There is a problem with get data from url: \(error)")

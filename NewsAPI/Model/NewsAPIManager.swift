@@ -12,12 +12,12 @@ struct NewsAPIManager {
 
     init(text: String, sortBy: String) {
         let urlEverything = "https://newsapi.org/v2/everything?apiKey=\(K.keyAPI)&q=\(text)&sortBy=\(sortBy)"
-        self.initialURL = urlEverything
+        initialURL = urlEverything
     }
     
     init(sources: String, country: String, category: String) {
         let urlTopHeadlines = "https://newsapi.org/v2/top-headlines?apiKey=\(K.keyAPI)&sources=\(sources)&country=\(country)&cattegory=\(category)"
-        self.initialURL = urlTopHeadlines
+        initialURL = urlTopHeadlines
     }
     
     
